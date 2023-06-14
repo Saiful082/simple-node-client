@@ -27,7 +27,11 @@ function App() {
     })
 
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+      console.log(data)
+      const newUser = [...users, data];
+      setUsers(newUser);
+    })
     .catch(error => console.error(error))
     event.target.reset();
 
@@ -46,7 +50,7 @@ function App() {
       <h2>Users: {users.length}</h2>
       <div>
        {
-         users.map(user => <p key={user.id}>{user.name} {user.email}</p>)
+         users.map(user => <p key={user._id}>{user.name} {user.email}</p>)
        }
       </div>
     </div>
